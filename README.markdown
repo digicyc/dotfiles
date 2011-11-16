@@ -4,14 +4,13 @@ As taken from holman's original dotfiles and edited for my personal use.
 
 ## install
 
-
 - `sudo apt-get install ruby rake`
 - `git clone git://github.com/holman/dotfiles ~/.dotfiles` for holman's original dotfiles
 - `git clone git://github.com/digicyc/dotfiles ~/.dotfiles` for my edited version.
 - `cd ~/.dotfiles`
 - `rake install`
 
-The install rake task will symlink the appropriate files in `.dotfiles` to your
+The `rake install` task will symlink the appropriate files in `.dotfiles` to your
 home directory. Everything is configured and tweaked within `~/.dotfiles`,
 though.
 
