@@ -2,6 +2,11 @@ autoload colors && colors
 # cheers, @ehrenmurdick
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
+if [[ $OSTYPE == darwin~ ]]
+then
+  $git_path = /usr/local/bin/git
+fi
+
 git_branch() {
   echo $(/usr/bin/git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
