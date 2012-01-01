@@ -84,5 +84,7 @@ function! StripWhitespace ()
 endfunction
 map ,s :call StripWhitespace ()<CR>
 
+filetype plugin indent on
+
 syntax on
 colorscheme ron

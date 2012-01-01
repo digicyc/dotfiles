@@ -1,3 +1,5 @@
 #!/bin/sh
 
+export IDEA_JDK="/opt/java"
+
 cd ${HOME}/Coding/idea/bin && ./idea.sh
