@@ -65,7 +65,7 @@ todo(){
     let todos=num-2
     if [ $todos != 0 ]
     then
-      echo "$todos"
+      echo "Todos: $todos"
     else
       echo ""
     fi
@@ -79,7 +79,6 @@ directory_name(){
 }
 
 export PROMPT=$'\n$(rvm_prompt) in $(directory_name) $(git_dirty)$(need_push)\n› '
-#export PROMPT=$'\n%n@%m in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
 }
