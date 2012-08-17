@@ -1,0 +1,31 @@
+#!/bin/sh
+# Check if branch has master in it
+# If so give a confirmation screen.
+
+if [[ $# -lt 2 ]];then
+    echo "Push to where?\n"
+    echo "[Usage] git mypush origin branchname/master"
+    exit 1
+fi
+
+echo "Pushing to [$1 $2]"
+
+if [[ $* == *master* ]];then
+  echo "[X][X][X] Are you sure you wanna push to [MASTER]? [X][X][X]" 
+  echo "yes/no: "
+  read conf
+  if [[ $conf == *y* ]];then
+    echo "[EXECUTE] git push origin master"
+    git push origin master
+  else
+    exit 1
+  fi
+else
+  if [[ $# -gt 1 ]];then
+    git push $1 $2
+  else
+    echo "Push to where?\n"
+    echo "[Usage] git mypush origin branchname"
+  fi
+fi
+
