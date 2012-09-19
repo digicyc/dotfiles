@@ -32,25 +32,31 @@ function generate_sbt_conf()
 {
   P_SBT=./$PROJ_NAME/build.sbt
 
-  echo "organization := \"$ORG_NAME\"" >> $P_SBT;
-  echo "" >> $P_SBT;
-  echo "name := \"$PROJ_NAME\"" >> $P_SBT;
-  echo "" >> $P_SBT;
-  echo "version := \"1.0\"" >> $P_SBT;
-  echo "" >> $P_SBT;
-  echo "autoScalaLibrary := false" >> $P_SBT;
-  echo "" >> $P_SBT;
-  echo "resolvers += \"Typesafe Repository\" at \"http://repo.typesafe.com/typesafe/release/\"" >> $P_SBT;
-  echo "" >> $P_SBT;
-  echo "libraryDependencies ++= {" >> $P_SBT;
-  echo "  Seq(" >> $P_SBT;
-  echo "    \"junit\" % \"junit\" % \"4.10\"," >> $P_SBT;
-  echo "    \"com.typesafe.akka\" % \"akka-actor\" % \"2.0.3\"" >> $P_SBT;
-  echo "  )\n}" >> $P_SBT;
+  cat > $P_SBT <<EOF
+organization := "$ORG_NAME"
+
+name := "$PROJ_NAME"
+
+version := "1.0"
+
+autoScalaLibrary := false
+
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+
+libraryDependencies ++= {
+  Seq(
+    "junit" % "junit" % "4.10",
+    "com.typesafe.akka" % "akka-actor" % "2.0.3"
+  )
+}
+
+EOF
+
 }
 
 # Build our dir structure.
 build_dir_struct
 generate_sbt_conf
-print "Project Created ばっか！"
+print "\nProject [$PROJ_NAME] Created ばっか！"
 print "じゃあまた"
+print ""
