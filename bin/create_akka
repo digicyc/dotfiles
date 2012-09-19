@@ -1,0 +1,56 @@
+#!/bin/zsh
+## Create an Akka project with SBT structure
+## Specifically for Java though.
+
+if [[ $# -lt 1 ]];then
+  print "You need to specify the name of the project to create"
+  print ""
+  print "EX: create_akka <project name>"
+  exit
+fi
+
+PROJ_NAME=$1
+ORG_NAME="codeoptimus"
+
+if [[ -d "$PROJ_NAME" || -f "$PROJ_NAME" ]];then
+  print "Project already exists: "
+  print "$PROJ_NAME"
+  exit
+fi
+
+function build_dir_struct()
+{
+  mkdir "$PROJ_NAME";
+  mkdir "$PROJ_NAME/src";
+  mkdir "$PROJ_NAME/src/test";
+  mkdir "$PROJ_NAME/src/main";
+  mkdir "$PROJ_NAME/src/main/java";
+  mkdir "$PROJ_NAME/src/main/java/$ORG_NAME";
+}
+
+function generate_sbt_conf() 
+{
+  P_SBT=./$PROJ_NAME/build.sbt
+
+  echo "organization := \"$ORG_NAME\"" >> $P_SBT;
+  echo "" >> $P_SBT;
+  echo "name := \"$PROJ_NAME\"" >> $P_SBT;
+  echo "" >> $P_SBT;
+  echo "version := \"1.0\"" >> $P_SBT;
+  echo "" >> $P_SBT;
+  echo "autoScalaLibrary := false" >> $P_SBT;
+  echo "" >> $P_SBT;
+  echo "resolvers += \"Typesafe Repository\" at \"http://repo.typesafe.com/typesafe/release/\"" >> $P_SBT;
+  echo "" >> $P_SBT;
+  echo "libraryDependencies ++= {" >> $P_SBT;
+  echo "  Seq(" >> $P_SBT;
+  echo "    \"junit\" % \"junit\" % \"4.10\"," >> $P_SBT;
+  echo "    \"com.typesafe.akka\" % \"akka-actor\" % \"2.0.3\"" >> $P_SBT;
+  echo "  )\n}" >> $P_SBT;
+}
+
+# Build our dir structure.
+build_dir_struct
+generate_sbt_conf
+print "Project Created ばっか！"
+print "じゃあまた"
