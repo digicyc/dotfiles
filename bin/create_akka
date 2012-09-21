@@ -57,6 +57,5 @@ EOF
 # Build our dir structure.
 build_dir_struct
 generate_sbt_conf
-print "\nProject [$PROJ_NAME] Created ばっか！"
-print "じゃあまた"
+print "\nProject [$PROJ_NAME] Created."
 print ""
