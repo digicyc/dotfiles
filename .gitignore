@@ -1,2 +1,7 @@
 vim/vim.symlink/.netrwhist
 git/gitconfig.symlink
+sbt/sbt.symlink/boot/
+sbt/sbt.symlink/plugins/project/
+sbt/sbt.symlink/plugins/target/
+sbt/sbt.symlink/staging/
+

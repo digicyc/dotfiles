@@ -33,7 +33,8 @@ git_prompt_info () {
 }
 
 unpushed () {
-  /usr/bin/git cherry -v origin/$(git_branch) 2>/dev/null
+  #/usr/bin/git cherry -v origin/$(git_branch) 2>/dev/null
+  /usr/bin/git cherry -v @{upstream} 2>/dev/null
 }
 
 need_push () {
@@ -64,7 +65,7 @@ todo(){
     let todos=num-2
     if [ $todos != 0 ]
     then
-      echo "$todos"
+      echo "Todos: $todos"
     else
       echo ""
     fi
@@ -77,8 +78,8 @@ directory_name(){
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-#export PROMPT=$'\n$(rvm_prompt) in $(directory_name) $(git_dirty)$(need_push)\n› '
-export PROMPT=$'\n%n@%m in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n%{$fg_bold[yellow]%}[%m]%{$reset_color%} in $(directory_name) $(git_dirty)$(need_push)\n› '
+#export PROMPT=$'\n$(rvm_prompt) in $(directory_name) %{$fg_bold[yellow]%}[%m]%{$reset_color%}: $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
 }
