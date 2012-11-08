@@ -4,7 +4,8 @@ set noswapfile
 " ----------------------------------------------------------------------------
 
 set autoindent             " automatic indent new lines
-set smartindent            " be smart about it
+"set smartindent            " be smart about it
+"set cindent
 inoremap # X<BS>#
 set nowrap                 " do not wrap lines
 set softtabstop=2          " yep, two
@@ -15,7 +16,13 @@ set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
 "set textwidth=80           " wrap at 80 chars by default. No thankyou
 "set virtualedit=block      " allow virtual edit in visual block ..
-"colorscheme vibrantink
+
+" auto identing for Java
+set si
+set shiftwidth=4
+set cinoptions+=j1
+let java_comment_strings=1
+let java_highlight_java_lang_ids=1
 
 " ----------------------------------------------------------------------------
 "  Remapping
@@ -84,6 +91,7 @@ endfunction
 map ,s :call StripWhitespace ()<CR>
 
 filetype plugin indent on
-
+set nocompatible
+set autoindent             " automatic indent new lines
 syntax on
 colorscheme ron

@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+sar=174.52.183.133
+
+if [[ $1 == 'local' ]];then
+    sar=10.0.0.32
+    echo "Connecting to _Local_ SarSys @ $sar"
+else
+    sar=174.52.183.133
+    echo "Connecting to _Remote_ SarSys @ $sar"
+fi
+
+# SSH into sarsys wherever he's located.
+ssh aaron@$sar

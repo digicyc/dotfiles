@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ssh digicyc@31.171.245.15
