@@ -98,28 +98,6 @@ else
   PROJ_NAME=$1
 fi
 
-# Option Arguments
-case $1 in
-  --test|-t)
-    echo 'Testing cmd arg'
-    exit 0
-  ;;
-  --help|-h)
-    usage
-    exit 0
-  ;;
-  --version|-v)
-    echo "Version: ${VERSION}"
-    exit 0
-  ;;
-  -*)
-    echo "Error: no such option $1"
-    usage
-    exit 1
-  ;;
-esac
-
-
 build_dirs
 build_files
 create_setup
