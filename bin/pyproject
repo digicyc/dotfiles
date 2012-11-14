@@ -1,0 +1,128 @@
+#!/bin/zsh
+## This will generate our Python Project structure.
+## Author: Aaron Allred
+
+VERSION="0.1"
+PROJ_NAME="Dummy"
+APP_NAME="dummy"
+
+
+function usage()
+{
+  echo "Usage:"
+  echo "\t$0 [--test|--help|--version] <projectname>"
+  echo " "
+}
+
+function build_dirs()
+# Build our Python Project dir structure
+{
+  echo "Creating our Directory structure for: [${PROJ_NAME}]"
+  APP_NAME=$PROJ_NAME/$PROJ_NAME
+
+  mkdir $PROJ_NAME &&
+  mkdir $APP_NAME &&
+  mkdir ${PROJ_NAME}/bin &&
+  mkdir ${PROJ_NAME}/tests &&
+  mkdir ${PROJ_NAME}/src &&
+  mkdir ${PROJ_NAME}/docs || echo "Problem creating directory structure"
+}
+
+function build_files()
+# Build our project files
+{
+  touch ${APP_NAME}/__init__.py
+  touch ${PROJ_NAME}/tests/__init__.py
+
+}
+
+function create_setup()
+# Create our config setup files
+{
+  CONFIG_FILE=$PROJ_NAME/setup.py
+
+  cat > $CONFIG_FILE <<EOF
+#!/usr/bin/env python
+
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+
+config = {
+    'description': '${PROJ_NAME}',
+    'author': 'My Name',
+    'url': 'URL to get it at.',
+    'download_url': 'Where to download it.',
+    'author_email': 'My email.',
+    'version': '0.1',
+    'install_requires': ['nose'],
+    'packages': ['${PROJ_NAME}'],
+    'scripts': [],
+    'name': '${PROJ_NAME}'
+}
+
+setup(**config)
+EOF
+}
+
+function create_test()
+# Create our super simple test file skeleton
+{
+  TEST_FILE=${PROJ_NAME}/tests/${PROJ_NAME}_tests.py
+
+  cat > $TEST_FILE <<EOF
+#!/usr/bin/env python
+
+from nose.tools import *
+import ${PROJ_NAME}
+
+def setup():
+    print "SETUP!"
+
+def teardown():
+    print "TEAR DOWN!"
+
+def test_basic():
+    print "I RAN!"
+EOF
+}
+
+################# MAIN ##################
+
+if [ $# -lt 1 ];then
+  echo "Need to give our Project a Name."
+  usage
+  exit 0;
+else
+  PROJ_NAME=$1
+fi
+
+# Option Arguments
+case $1 in
+  --test|-t)
+    echo 'Testing cmd arg'
+    exit 0
+  ;;
+  --help|-h)
+    usage
+    exit 0
+  ;;
+  --version|-v)
+    echo "Version: ${VERSION}"
+    exit 0
+  ;;
+  -*)
+    echo "Error: no such option $1"
+    usage
+    exit 1
+  ;;
+esac
+
+
+build_dirs
+build_files
+create_setup
+create_test
+
+echo "${PROJ_NAME} has been created.."
