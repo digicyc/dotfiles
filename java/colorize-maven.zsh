@@ -115,23 +115,25 @@ color_maven() {
 	projectname=${c_bold}${c_cyan}
 	skipped=${c_white}
 	downloading=${c_magenta}
+  
+  /opt/maven/bin/mvn $*
 
-	/usr/bin/mvn $* | sed -e "s/\(\[INFO\]\) Building\( .*\)/${info}\1${projectname}\2${c_end}/g" \
-		-e "s/\(Time elapsed: \)\([0-9]+[.]*[0-9]*.sec\)/${c_cyan}\1${c_white}\2${c_end}/g" \
-		-e "s/\(Downloading: .*\)/${downloading}\1${c_end}/g" \
-		-e "s/BUILD FAILURE/${error}BUILD FAILURE${c_end}/g" \
-		-e "s/WARNING: \([a-zA-Z0-9.-/\\ :]+\)/${warn}WARNING: \1${c_end}/g" \
-		-e "s/SEVERE: \(.+\)/${c_white}${c_bg_red}SEVERE: \1${c_end}/g" \
-		-e "s/Caused by: \(.+\)/${c_white}${c_bg_green}Caused by: \1${c_end}/g" \
-		-e "s/Running \(.+\)/${c_green}Running \1${c_end}/g" \
-		-e "s/FAILURE \(\[[0-9]+.[:0-9]+s\]\)/${error}FAILURE \1${c_end}/g" \
-		-e "s/SUCCESS \(\[[0-9]+.[:0-9]+s\]\)/${success}SUCCESS \1${c_end}/g" \
-		-e "s/\(\[INFO.*\)/${info}\1${c_end}/g" \
-		-e "s/INFO: \(.+\)/${c_white}INFO: \1${c_end}/g" \
-    	-e "s/\(\[WARN.*\)/${warn}\1${c_end}/g" \
-    	-e "s/\(\[ERROR.*\)/${error}\1${c_end}/g" \
-    	-e "s/\(<<< FAILURE!\)/${error}\1${c_end}/g" \
-    	-e "s/Tests run: \([0-9]*\), Failures: \([0-9]*\), Errors: \([0-9]*\), Skipped: \([0-9]*\)/${c_green}Tests run: \1 ${c_end}, Failures: ${warn}\2 ${c_end}, Errors: ${error}\3 ${c_end}, Skipped:  ${skipped}\4 ${c_end}/g"
+	#/opt/maven/bin/mvn $* | sed -e "s/\(\[INFO\]\) Building\( .*\)/${info}\1${projectname}\2${c_end}/g" \
+	#	-e "s/\(Time elapsed: \)\([0-9]+[.]*[0-9]*.sec\)/${c_cyan}\1${c_white}\2${c_end}/g" \
+	#	-e "s/\(Downloading: .*\)/${downloading}\1${c_end}/g" \
+	#	-e "s/BUILD FAILURE/${error}BUILD FAILURE${c_end}/g" \
+	#	-e "s/WARNING: \([a-zA-Z0-9.-/\\ :]+\)/${warn}WARNING: \1${c_end}/g" \
+	#	-e "s/SEVERE: \(.+\)/${c_white}${c_bg_red}SEVERE: \1${c_end}/g" \
+	#	-e "s/Caused by: \(.+\)/${c_white}${c_bg_green}Caused by: \1${c_end}/g" \
+	#	-e "s/Running \(.+\)/${c_green}Running \1${c_end}/g" \
+	#	-e "s/FAILURE \(\[[0-9]+.[:0-9]+s\]\)/${error}FAILURE \1${c_end}/g" \
+	#	-e "s/SUCCESS \(\[[0-9]+.[:0-9]+s\]\)/${success}SUCCESS \1${c_end}/g" \
+	#	-e "s/\(\[INFO.*\)/${info}\1${c_end}/g" \
+	#	-e "s/INFO: \(.+\)/${c_white}INFO: \1${c_end}/g" \
+  #  	-e "s/\(\[WARN.*\)/${warn}\1${c_end}/g" \
+  #  	-e "s/\(\[ERROR.*\)/${error}\1${c_end}/g" \
+  #  	-e "s/\(<<< FAILURE!\)/${error}\1${c_end}/g" \
+  #  	-e "s/Tests run: \([0-9]*\), Failures: \([0-9]*\), Errors: \([0-9]*\), Skipped: \([0-9]*\)/${c_green}Tests run: \1 ${c_end}, Failures: ${warn}\2 ${c_end}, Errors: ${error}\3 ${c_end}, Skipped:  ${skipped}\4 ${c_end}/g"
 }
 
 alias mvn=color_maven
