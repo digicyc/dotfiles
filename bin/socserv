@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+function server_list()
+# List our available servers
+{
+  echo "Available Servers:";
+  echo "\teli : New ContactManager Dev";
+  echo "\talyx : ";
+}
+
+if [ $# -lt 1 ];then
+  echo "Please pass a server as an argument\n";
+  server_list;
+  exit 0;
+fi
+server_list;
+
+# get arguments
+if [ $1 = "eli" ];then
+  ssh sendout@eli.swetesoc.com
+elif [ $1 = "alyx" ];then
+  ssh sendout@alyx.swetesoc.com
+else
+  echo "Pick a server to connect to sucka!";
+  exit 0;
+fi
+
+
