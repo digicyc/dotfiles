@@ -23,7 +23,7 @@ for config_file ($ZSH/**/completion.sh) source $config_file
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-
+# Perl environment Variables
 export PERL_LOCAL_LIB_ROOT="/home/aaron/perl5";
 export PERL_MB_OPT="--install_base /home/aaron/perl5";
 export PERL_MM_OPT="INSTALL_BASE=/home/aaron/perl5";
