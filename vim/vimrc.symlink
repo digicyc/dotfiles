@@ -95,3 +95,4 @@ set nocompatible
 set autoindent             " automatic indent new lines
 syntax on
 colorscheme ron
+au BufNewFile,BufRead *.less set filetype=less
