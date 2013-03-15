@@ -6,7 +6,6 @@ As taken from holman's original dotfiles and edited for my personal use.
 ## install
 
 - `sudo apt-get install ruby rake`
-- `git clone git://github.com/holman/dotfiles ~/.dotfiles` for holman's original dotfiles
 - `git clone git://github.com/digicyc/dotfiles ~/.dotfiles` for my edited version.
 - `cd ~/.dotfiles`
 - `rake install`
