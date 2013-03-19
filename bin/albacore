@@ -1,2 +1,27 @@
-#ssh aaron@10.1.42.106
-ssh aaron@65.44.116.164
+#!/bin/zsh
+
+function server_list()
+{
+  echo "Available Options:";
+  echo "\tlocal : on soc network";
+  echo "\tremote : not on soc network";
+}
+
+if [ $# -lt 1 ];then
+  echo "Please pass a server as an argument\n";
+  server_list;
+  exit 0;
+fi
+server_list;
+
+# get arguments
+if [ $1 = "remote" ];then
+  mosh aaron@65.44.116.164
+elif [ $1 = "local" ];then
+  mosh aaron@10.1.42.106
+else
+  echo "Pick a connect type SUCKA!";
+  exit 0;
+fi
+
+
