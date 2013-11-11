@@ -6,6 +6,7 @@ function server_list()
   echo "Available Servers:";
   echo "\teli : New ContactManager Dev";
   echo "\talyx : ";
+  echo "\tshells : Shells Server";
 }
 
 if [ $# -lt 1 ];then
@@ -20,6 +21,10 @@ if [ $1 = "eli" ];then
   ssh sendout@eli.swetesoc.com
 elif [ $1 = "alyx" ];then
   ssh sendout@alyx.swetesoc.com
+elif [ $1 = "shells" ];then
+  ssh sendout@shells.sendoutcards.com
+elif [ $1 = "freeman" ];then
+  ssh sendout@freeman.swetesoc.com
 else
   echo "Pick a server to connect to sucka!";
   exit 0;
