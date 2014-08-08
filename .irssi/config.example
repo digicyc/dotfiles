@@ -12,16 +12,17 @@ servers = (
 chatnets = {
   freenode = {
     type = "IRC";
-    autosendcmd = "/^msg nickserv identify <addpasswdhere>;wait 3000";
+    autosendcmd = "/^msg nickserv identify <ur pass>;wait 3000";
   };
 };
 
 channels = (
   { name = "#socu"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#scala"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#lift"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#botfactory"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#swetesoc"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#scala"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#akka"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#playframework"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#reactivemongo"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -59,7 +60,7 @@ aliases = {
   UMODE = "mode $N";
   WC = "window close";
   WN = "window new hide";
-  SV = "say Irssi $J ($V) - http://irssi.org/";
+  SV = "say Irssi ya sneaky bugger ^_^ $J ($V) - http://irssi.org/";
   GOTO = "sb goto";
   CHAT = "dcc chat";
   RUN = "SCRIPT LOAD";
@@ -199,6 +200,6 @@ autolog = "yes";
 ignores = (
   {
     level = "JOINS PARTS QUITS";
-    channels = ( "#haskell #scala #lift #arduino #scalaz" );
+    channels = ( "#scala #scalaz #akka #playframework" );
   }
 );
