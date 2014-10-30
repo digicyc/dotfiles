@@ -1,2 +1,3 @@
 #!/bin/sh
-ssh digicyc@node02.nyc.honeystack.io -p 49158
+#ssh digicyc@node02.nyc.honeystack.io -p 49158
+ssh digicyc@104.156.227.50 -p 49158
